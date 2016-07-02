@@ -11,6 +11,7 @@
                 <outlet property="allHeroButton" destination="HgV-WC-q1N" id="zvg-U1-a5b"/>
                 <outlet property="myHero" destination="wKa-nl-B2X" id="cOs-B2-hXB"/>
                 <outlet property="myHeroButton" destination="mb7-tI-dKN" id="Vgb-tf-eoI"/>
+                <outlet property="pickHeroView" destination="XmX-8n-ApG" id="F7L-5e-o1b"/>
                 <outlet property="scrollView" destination="khL-Jh-aVt" id="PiT-gE-hmQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weeklyButton" destination="8cG-HG-ihw" id="fFA-zA-3He"/>
@@ -48,17 +49,52 @@
                                 <outlet property="delegate" destination="-1" id="Muw-70-n7M"/>
                             </connections>
                         </tableView>
-                        <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dpu-iT-qpV">
+                        <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dpu-iT-qpV">
                             <rect key="frame" x="0.0" y="103" width="414" height="568"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <inset key="scrollIndicatorInsets" minX="0.0" minY="-64" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="oEf-b9-k5V"/>
                                 <outlet property="delegate" destination="-1" id="hrT-4D-eQ0"/>
                             </connections>
                         </tableView>
+                        <view contentMode="scaleToFill" id="XmX-8n-ApG">
+                            <rect key="frame" x="0.0" y="2" width="378" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n5L-2V-UB1">
+                                    <rect key="frame" x="295" y="2" width="60" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <state key="normal" title="类型排序"/>
+                                    <connections>
+                                        <action selector="typePick:" destination="-1" eventType="touchUpInside" id="FHa-XY-UfI"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aKa-wf-I5p">
+                                    <rect key="frame" x="159" y="0.0" width="60" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <state key="normal" title="价格排序"/>
+                                    <connections>
+                                        <action selector="pricePick:" destination="-1" eventType="touchUpInside" id="bh5-fh-HCt"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jkQ-kc-5HC">
+                                    <rect key="frame" x="8" y="0.0" width="60" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <state key="normal" title="名字排序"/>
+                                    <connections>
+                                        <action selector="namePick:" destination="-1" eventType="touchUpInside" id="D5Q-iB-lkx"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                     </subviews>
                     <animations/>
                     <inset key="contentInset" minX="0.0" minY="-64" maxX="0.0" maxY="0.0"/>

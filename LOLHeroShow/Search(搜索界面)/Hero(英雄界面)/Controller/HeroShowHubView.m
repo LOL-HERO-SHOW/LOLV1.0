@@ -9,6 +9,7 @@
 #import "HeroShowHubView.h"
 #import "requestTool.h"
 #import <UIImageView+AFNetworking.h>
+#import "heroBasicData.h"
 #define SCROLLWIDTH self.scrollView.frame.size.width
 
 
@@ -34,6 +35,9 @@
 
 
 
+//所有 英雄筛选 按钮集合
+@property (weak, nonatomic) IBOutlet UIView *pickHeroView;
+@property (copy, nonatomic)NSArray *OldAllHeroArr;
 
 //data =     (
 //            {
@@ -83,31 +87,21 @@
 //    self.allHero.dataSource = all;
     
 //    请求全英雄数据
-    [requestTool requestAllHeroCallBack:^(id obj) {
+   [requestTool requestNewAllHeroCallBack:^(id obj) {
        
-        self.AllHeroArr = obj;
-    
-        
-        
-        [self.allHero reloadData];
-        
-    }];
+       self.OldAllHeroArr=self.AllHeroArr = obj;
+       [self.allHero reloadData];
+       
+       
+   }];
   
     //请求周免英雄数据
-    [requestTool requestWeeklyHeroCallBack:^(id obj) {
+    [requestTool requestNewWeeklyHeroCallBack:^(id obj) {
         
         
-        NSArray *tmp = obj;
-        NSDictionary *tmpd = tmp[0];
-        NSMutableArray *heroarr = [NSMutableArray array];
-        NSArray *allkeys = [tmpd allKeys];
-        for (NSString *key in allkeys  ) {
-            
-            [heroarr addObject:tmpd[key]];
-            
-        }
+      
         
-        self.WeeklyHeroArr = heroarr;
+        self.WeeklyHeroArr = obj;
         
         [self.weeklyHero reloadData];
 
@@ -137,6 +131,7 @@
     
     
     self.allHero.frame = CGRectMake(SCROLLWIDTH*2, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    
      [self.scrollView addSubview:self.allHero];
     //进页面 我的英雄 按钮 是选中的 显示 我的英雄tableview
     self.myHeroButton.selected = YES;
@@ -178,6 +173,10 @@
 //    self.myHeroButton.selected = NO;
 //    self.weeklyButton.selected = NO;
 //    self.allHeroButton.selected = YES;
+    
+    
+    self.pickHeroView.center = CGPointMake(SCROLLWIDTH*2+189, 30);
+    [self.scrollView addSubview:self.pickHeroView];
 }
 
 //滚动视图 发生改变的时候(代理方法) 改变按钮的选中状态
@@ -213,12 +212,11 @@
         //全英雄来设置行数
         
         return self.AllHeroArr.count/2;
-    }
-    if (tableView.tag == 1) {
+    }else if (tableView.tag == 1) {
                return self.WeeklyHeroArr.count/2;
     }
    
-    if (tableView.tag == 0) {
+    else{
         NSLog(@"-----%ld",self.MyHeroArr.count);
         return self.MyHeroArr.count;
     }
@@ -231,7 +229,7 @@
 //                      return self.AllHeroArr.count;
 //            }
 
-    return 3;
+   
 
 }
 
@@ -278,40 +276,49 @@
         
         
         WeeklyFreeHeroTableViewCell *cell = [WeeklyFreeHeroTableViewCell cellForTableview:tableView];
+      
+        heroBasicData *hero1 = self.WeeklyHeroArr[indexPath.row*2+1];
         
-       NSDictionary *wdic1 = self.WeeklyHeroArr[indexPath.row*2];
-       
-        cell.LeftHeroTypeLabel.text = wdic1[@"name"];
-        cell.LeftNameLabel.text = wdic1[@"title"];
-        cell.LeftNickNameLabel.text = wdic1[@"name"];
+        
+        cell.LeftHeroTypeLabel.text = hero1.tags;//英雄 类型
+        
         //添加点击事件
-        cell.LeftImageview.tag = [wdic1[@"key"] intValue];//用tag值传参数到点击事件里面 把英雄id
+        cell.LeftImageview.tag = indexPath.row*2+1;//用tag值传参数到点击事件里面
         cell.LeftImageview.userInteractionEnabled = YES;
-        UITapGestureRecognizer *singleTap1 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
-        [cell.LeftImageview addGestureRecognizer:singleTap1];
-
+        UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked1:)];
+        [cell.LeftImageview addGestureRecognizer:singleTap];
         
         
-        NSString *imagePath1 = [NSString stringWithFormat:@"http://cdn.tgp.qq.com/pallas/images/champions_id/%@.png",wdic1[@"key"]];
+        
+        cell.LeftNickNameLabel.text = hero1.cnName;//中文名
+        cell.LeftNameLabel.text = hero1.title;
+        NSString *imagePath1 = [NSString stringWithFormat:@"http://ossweb-img.qq.com/images/lol/img/champion/%@.png",hero1.enName];
         [cell.LeftImageview setImageWithURL:[NSURL URLWithString:imagePath1]];
+        
+     
+        ////////////////////////////////////
+       
+            heroBasicData *hero2 = self.WeeklyHeroArr[indexPath.row*2+2];
+            
+            
+            cell.RightHeroTypeLabel.text = hero2.tags;//英雄 类型
+            
+            //添加点击事件
+            cell.RightImageview.tag = indexPath.row*2+2;//右边
+            cell.RightImageview.userInteractionEnabled = YES;
+            UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked1:)];
+            [cell.RightImageview addGestureRecognizer:singleTap2];
+            
+            
+            
+            cell.RightNickNameLabel.text = hero2.cnName;//中文名
+            cell.RightNameLabel.text = hero2.title;
+            
+            
+            NSString *imagePath2 = [NSString stringWithFormat:@"http://ossweb-img.qq.com/images/lol/img/champion/%@.png",hero2.enName];
+            [cell.RightImageview setImageWithURL:[NSURL URLWithString:imagePath2]];
+       
 
-    //*******************************************
-        NSDictionary *wdic2 = self.WeeklyHeroArr[indexPath.row*2+1];
-        cell.RightHeroTypeLabel.text = wdic2[@"name"];
-        cell.RightNameLabel.text = wdic2[@"title"];
-        cell.RightNickNameLabel.text = wdic2[@"name"];
-        
-        
-        //添加点击事件
-        cell.RightImageview.tag = [wdic2[@"key"] intValue];//用tag值传参数到点击事件里面 把英雄id
-        cell.RightImageview.userInteractionEnabled = YES;
-        UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
-        [cell.RightImageview addGestureRecognizer:singleTap2];
-        
-        
-        
-        NSString *imagePath2 = [NSString stringWithFormat:@"http://cdn.tgp.qq.com/pallas/images/champions_id/%@.png",wdic2[@"key"]];
-        [cell.RightImageview setImageWithURL:[NSURL URLWithString:imagePath2]];
         
         return cell;
         
@@ -325,78 +332,47 @@
                 //一行 2个英雄   所以  有 count/2 行
             
                 
-                NSDictionary *dic1 = self.AllHeroArr[indexPath.row*2+1];
-                
-                
-                NSString *champion_id = [dic1[@"champion_id"] stringValue];
-                cell.LeftHeroTypeLabel.text = [NSString stringWithFormat:@"英雄ID:%@",champion_id];
-                
-                NSString *imagePath = [NSString stringWithFormat:@"http://cdn.tgp.qq.com/pallas/images/champions_id/%@.png",champion_id];
-                [cell.LeftImageview setImageWithURL:[NSURL URLWithString:imagePath]];
-                
+                heroBasicData *hero1 = self.AllHeroArr[indexPath.row*2+1];
+            
+            
+            cell.LeftHeroTypeLabel.text = hero1.tags;//英雄 类型
+         
               //添加点击事件
-            cell.LeftImageview.tag = champion_id.intValue;//用tag值传参数到点击事件里面
+            cell.LeftImageview.tag = indexPath.row*2+1;//左边
             cell.LeftImageview.userInteractionEnabled = YES;
             UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
             [cell.LeftImageview addGestureRecognizer:singleTap];
             
             
-            __block NSString *name = nil;
             
-            [requestTool requestHeroNameWithHeroID:champion_id CallBack:^(id obj) {
-                
-                NSArray *arr = obj;
-                NSDictionary *ddd = arr[0];
-                name = ddd[@"return"];
-                cell.LeftNameLabel.text = name;
-                [cell.layer needsLayout];
-                
-            }];
-           
+            cell.LeftNickNameLabel.text = hero1.cnName;//中文名
+            cell.LeftNameLabel.text = hero1.title;
+            NSString *imagePath1 = [NSString stringWithFormat:@"http://ossweb-img.qq.com/images/lol/img/champion/%@.png",hero1.enName];
+            [cell.LeftImageview setImageWithURL:[NSURL URLWithString:imagePath1]];
             
-            NSNumber *s = dic1[@"win_ratio"];
-            float win = s.floatValue/100.0;
-            
-            cell.LeftNickNameLabel.text = [NSString stringWithFormat:@"胜率:%lg", win];
+            //  ??***********************  ??***********************
 
             
-            
-            
-            if (indexPath.row<self.AllHeroArr.count) {
-                NSDictionary *dic2 = self.AllHeroArr[indexPath.row*2+2];
+                heroBasicData *hero2 = self.AllHeroArr[indexPath.row*2+2];
                 
-                NSString *champion_id = [dic2[@"champion_id"] stringValue];
-                cell.RightHeroTypeLabel.text = [NSString stringWithFormat:@"英雄ID:%@",champion_id];
                 
-                NSString *imagePath = [NSString stringWithFormat:@"http://cdn.tgp.qq.com/pallas/images/champions_id/%@.png",champion_id];
-             
-                 cell.RightImageview.tag = champion_id.intValue;//用tag值传参数到点击事件里面
-                [cell.RightImageview setImageWithURL:[NSURL URLWithString:imagePath]];
+                cell.RightHeroTypeLabel.text = hero1.tags;//英雄 类型
                 
                 //添加点击事件
+                cell.RightImageview.tag = indexPath.row*2+2;//右边
                 cell.RightImageview.userInteractionEnabled = YES;
-                UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
+                UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
+                [cell.RightImageview addGestureRecognizer:singleTap2];
                 
-                [cell.RightImageview addGestureRecognizer:singleTap];
                 
-                __block NSString *name = nil;
+               
+                cell.RightNickNameLabel.text = hero2.cnName;//中文名
+                cell.RightNameLabel.text = hero2.title;
                 
-                [requestTool requestHeroNameWithHeroID:champion_id CallBack:^(id obj) {
-                    
-                    NSArray *arr = obj;
-                    NSDictionary *ddd = arr[0];
-                    name = ddd[@"return"];
-                    cell.RightNameLabel.text = name;
-                    [cell.layer needsLayout];
-                    
-                }];
-                //胜率
                 
-                NSNumber *s = dic2[@"win_ratio"];
-                float win = s.floatValue/100.0;
-                
-                cell.RightNickNameLabel.text = [NSString stringWithFormat:@"胜率:%lg", win];
-            }
+                NSString *imagePath2 = [NSString stringWithFormat:@"http://ossweb-img.qq.com/images/lol/img/champion/%@.png",hero2.enName];
+                [cell.RightImageview setImageWithURL:[NSURL URLWithString:imagePath2]];
+           
           
                 //http://cdn.tgp.qq.com/pallas/images/champions_id/101.png 英雄头像
         
@@ -411,13 +387,23 @@
 }
 
 
--(void)UesrClicked:(UITapGestureRecognizer *)singleTap
+-(void)UesrClicked:(UITapGestureRecognizer *)singleTap//所有英雄跳转
 {
     UIImageView *iv = (UIImageView *)singleTap.view;//获得点击事件所在的view
-    NSLog(@"英雄id%ld",iv.tag);
-    //此时的tag 代表 英雄id
+    
+    heroBasicData *hero1 = self.AllHeroArr[iv.tag];
+       NSLog(@"%@",hero1.enName);
+    
 }
 
+-(void)UesrClicked1:(UITapGestureRecognizer *)singleTap//周免英雄跳转
+{
+    UIImageView *iv = (UIImageView *)singleTap.view;//获得点击事件所在的view
+    
+    heroBasicData *hero1 = self.WeeklyHeroArr[iv.tag];
+    NSLog(@"%@",hero1.enName);
+    
+}
 
 
 
@@ -446,6 +432,57 @@
 {
     return 80;
 }
+
+
+
+
+//所有英雄数据筛选 按钮
+- (IBAction)namePick:(id)sender {
+    
+    
+          self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+              heroBasicData *hero1 = obj1;
+              heroBasicData *hero2 = obj2;
+              
+              NSComparisonResult  result = [hero1.title compare:hero2.title];
+              
+                    
+              return result;
+             }];
+    [self.allHero reloadData];
+    
+}
+- (IBAction)pricePick:(id)sender {
+    
+    self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        heroBasicData *hero1 = obj1;
+        heroBasicData *hero2 = obj2;
+        
+        NSComparisonResult  result = [hero1.price compare:hero2.price];
+        
+        
+        return result;
+    }];
+    [self.allHero reloadData];
+
+    
+}
+- (IBAction)typePick:(id)sender {
+    
+    self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        heroBasicData *hero1 = obj1;
+        heroBasicData *hero2 = obj2;
+        
+        NSComparisonResult  result = [hero1.tags compare:hero2.tags];
+        
+        
+        return result;
+    }];
+    [self.allHero reloadData];
+
+    
+}
+
 
 
 @end

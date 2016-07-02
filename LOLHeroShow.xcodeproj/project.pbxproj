@@ -10,6 +10,8 @@
 		43173FE71D26143D0017B823 /* Combat.m in Sources */ = {isa = PBXBuildFile; fileRef = 43173FE61D26143D0017B823 /* Combat.m */; };
 		43173FEB1D265D270017B823 /* 01z58PICNdh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43173FEA1D265D270017B823 /* 01z58PICNdh.jpg */; };
 		51340CF7550A8A125BBA46D7 /* libPods-LOLHeroShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC3BF90A7D8A616B3CDE4D3 /* libPods-LOLHeroShow.a */; };
+		8516F3E51D269F4F00F6707F /* heroBasicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8516F3E41D269F4E00F6707F /* heroBasicData.m */; };
+		8516F3E71D26A30D00F6707F /* HeroShowHubView的m文件 in Resources */ = {isa = PBXBuildFile; fileRef = 8516F3E61D26A30D00F6707F /* HeroShowHubView的m文件 */; };
 		851E80421D24A01C007E573C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E803D1D24A01C007E573C /* SearchViewController.m */; };
 		851E80441D24A01C007E573C /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E80411D24A01C007E573C /* UserInfoTableViewController.m */; };
 		8587E7DB1D24A11800E786BF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8587E7DA1D24A11800E786BF /* User.m */; };
@@ -60,6 +62,9 @@
 		43173FE51D26143D0017B823 /* Combat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Combat.h; path = LOLHeroShow/Combat.h; sourceTree = SOURCE_ROOT; };
 		43173FE61D26143D0017B823 /* Combat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Combat.m; path = LOLHeroShow/Combat.m; sourceTree = SOURCE_ROOT; };
 		43173FEA1D265D270017B823 /* 01z58PICNdh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01z58PICNdh.jpg; sourceTree = "<group>"; };
+		8516F3E31D269F4E00F6707F /* heroBasicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = heroBasicData.h; sourceTree = "<group>"; };
+		8516F3E41D269F4E00F6707F /* heroBasicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = heroBasicData.m; sourceTree = "<group>"; };
+		8516F3E61D26A30D00F6707F /* HeroShowHubView的m文件 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "HeroShowHubView的m文件"; sourceTree = "<group>"; };
 		851E803C1D24A01C007E573C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		851E803D1D24A01C007E573C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		851E80401D24A01C007E573C /* UserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewController.h; sourceTree = "<group>"; };
@@ -419,6 +424,7 @@
 				85DB41941D20DCAB0045DA86 /* HeroShowHubView.h */,
 				85DB41951D20DCAB0045DA86 /* HeroShowHubView.m */,
 				85DB41961D20DCAB0045DA86 /* HeroShowHubView.xib */,
+				8516F3E61D26A30D00F6707F /* HeroShowHubView的m文件 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -462,6 +468,8 @@
 			children = (
 				85DB28E01D22A795001F2564 /* requestTool.h */,
 				85DB28E11D22A795001F2564 /* requestTool.m */,
+				8516F3E31D269F4E00F6707F /* heroBasicData.h */,
+				8516F3E41D269F4E00F6707F /* heroBasicData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,6 +605,7 @@
 				8587E7FE1D24A2F000E786BF /* SettingViewController.xib in Resources */,
 				85DB41BF1D20F8A00045DA86 /* MyHeroTableViewCell.xib in Resources */,
 				85F89E9C1D24CA370061BAB0 /* searchbar_textfield_search_icon@2x.png in Resources */,
+				8516F3E71D26A30D00F6707F /* HeroShowHubView的m文件 in Resources */,
 				85AFF11C1D1BFCF500B0D27F /* PodFile in Resources */,
 				85DB41AF1D20DCAB0045DA86 /* HeroDescriptionTableViewController.xib in Resources */,
 				43173FEB1D265D270017B823 /* 01z58PICNdh.jpg in Resources */,
@@ -680,6 +689,7 @@
 				85DB41A81D20DCAB0045DA86 /* HeroShowHubView.m in Sources */,
 				85DB41BC1D20F8A00045DA86 /* AllHeroTableViewCell.m in Sources */,
 				8587E7FB1D24A2F000E786BF /* RecordTableViewCell.m in Sources */,
+				8516F3E51D269F4F00F6707F /* heroBasicData.m in Sources */,
 				85DB28E21D22A795001F2564 /* requestTool.m in Sources */,
 				85AFF1061D1B64A900B0D27F /* main.m in Sources */,
 				85F89EAF1D2540FE0061BAB0 /* News.m in Sources */,

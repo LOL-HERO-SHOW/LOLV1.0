@@ -20,4 +20,12 @@ typedef void (^MyCallback)(id obj);
 //我的英雄
 +(void)requestQQuid:(NSString *)qquid Vaid:(NSString *)vaid HeroCallBack:(MyCallback)callback;
 
+
+//新的 全英雄申请
++(void)requestNewAllHeroCallBack:(MyCallback)callback;
+
+
+//新的 周免申请
++(void)requestNewWeeklyHeroCallBack:(MyCallback)callback;
+
 @end
