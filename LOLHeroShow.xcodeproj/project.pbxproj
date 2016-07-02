@@ -12,6 +12,8 @@
 		51340CF7550A8A125BBA46D7 /* libPods-LOLHeroShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC3BF90A7D8A616B3CDE4D3 /* libPods-LOLHeroShow.a */; };
 		8516F3E51D269F4F00F6707F /* heroBasicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8516F3E41D269F4E00F6707F /* heroBasicData.m */; };
 		8516F3E71D26A30D00F6707F /* HeroShowHubView的m文件 in Resources */ = {isa = PBXBuildFile; fileRef = 8516F3E61D26A30D00F6707F /* HeroShowHubView的m文件 */; };
+		8516F3F91D275CEE00F6707F /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 8516F3F61D275CEE00F6707F /* ico_make.png */; };
+		8516F3FA1D275CEE00F6707F /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8516F3F81D275CEE00F6707F /* JSDropDownMenu.m */; };
 		851E80421D24A01C007E573C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E803D1D24A01C007E573C /* SearchViewController.m */; };
 		851E80441D24A01C007E573C /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E80411D24A01C007E573C /* UserInfoTableViewController.m */; };
 		8587E7DB1D24A11800E786BF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8587E7DA1D24A11800E786BF /* User.m */; };
@@ -65,6 +67,9 @@
 		8516F3E31D269F4E00F6707F /* heroBasicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = heroBasicData.h; sourceTree = "<group>"; };
 		8516F3E41D269F4E00F6707F /* heroBasicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = heroBasicData.m; sourceTree = "<group>"; };
 		8516F3E61D26A30D00F6707F /* HeroShowHubView的m文件 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "HeroShowHubView的m文件"; sourceTree = "<group>"; };
+		8516F3F61D275CEE00F6707F /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		8516F3F71D275CEE00F6707F /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
+		8516F3F81D275CEE00F6707F /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		851E803C1D24A01C007E573C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		851E803D1D24A01C007E573C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		851E80401D24A01C007E573C /* UserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewController.h; sourceTree = "<group>"; };
@@ -154,6 +159,16 @@
 				CCC3BF90A7D8A616B3CDE4D3 /* libPods-LOLHeroShow.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8516F3F51D275CEE00F6707F /* JSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8516F3F61D275CEE00F6707F /* ico_make.png */,
+				8516F3F71D275CEE00F6707F /* JSDropDownMenu.h */,
+				8516F3F81D275CEE00F6707F /* JSDropDownMenu.m */,
+			);
+			path = JSDropDownMenu;
 			sourceTree = "<group>";
 		};
 		85AFF0F81D1B64A900B0D27F = {
@@ -418,6 +433,7 @@
 		85DB41901D20DCAB0045DA86 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8516F3F51D275CEE00F6707F /* JSDropDownMenu */,
 				85DB41B01D20F8A00045DA86 /* tableview全部英雄 */,
 				85DB41B41D20F8A00045DA86 /* tableview我的英雄 */,
 				85DB41B81D20F8A00045DA86 /* tableview周免英雄 */,
@@ -603,6 +619,7 @@
 				85F89EAC1D253C540061BAB0 /* MyCell.xib in Resources */,
 				85DB41BD1D20F8A00045DA86 /* AllHeroTableViewCell.xib in Resources */,
 				8587E7FE1D24A2F000E786BF /* SettingViewController.xib in Resources */,
+				8516F3F91D275CEE00F6707F /* ico_make.png in Resources */,
 				85DB41BF1D20F8A00045DA86 /* MyHeroTableViewCell.xib in Resources */,
 				85F89E9C1D24CA370061BAB0 /* searchbar_textfield_search_icon@2x.png in Resources */,
 				8516F3E71D26A30D00F6707F /* HeroShowHubView的m文件 in Resources */,
@@ -696,6 +713,7 @@
 				85DB41561D20D4F30045DA86 /* WelcomeLOLViewController.m in Sources */,
 				85DB41BE1D20F8A00045DA86 /* MyHeroTableViewCell.m in Sources */,
 				85F89EAB1D253C540061BAB0 /* MyCell.m in Sources */,
+				8516F3FA1D275CEE00F6707F /* JSDropDownMenu.m in Sources */,
 				851E80441D24A01C007E573C /* UserInfoTableViewController.m in Sources */,
 				8587E7FD1D24A2F000E786BF /* SettingViewController.m in Sources */,
 				8587E7FA1D24A2F000E786BF /* qqTableViewCell.m in Sources */,

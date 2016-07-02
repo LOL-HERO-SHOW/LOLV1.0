@@ -14,12 +14,14 @@
 
 
 
+
+
 //表格的cell
 #import "MyHeroTableViewCell.h"
 #import "AllHeroTableViewCell.h"
 #import "WeeklyFreeHeroTableViewCell.h"
 
-@interface HeroShowHubView ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface HeroShowHubView ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,JSDropDownMenuDataSource,JSDropDownMenuDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myHero;
 @property (weak, nonatomic) IBOutlet UITableView *weeklyHero;
 @property (weak, nonatomic) IBOutlet UITableView *allHero;
@@ -35,8 +37,6 @@
 
 
 
-//所有 英雄筛选 按钮集合
-@property (weak, nonatomic) IBOutlet UIView *pickHeroView;
 @property (copy, nonatomic)NSArray *OldAllHeroArr;
 
 //data =     (
@@ -61,6 +61,17 @@
 
 //用户(我的)英雄
 @property(strong,nonatomic)NSArray *MyHeroArr;
+
+
+
+
+
+
+
+
+
+
+
 @end
 
 @implementation HeroShowHubView
@@ -135,6 +146,8 @@
      [self.scrollView addSubview:self.allHero];
     //进页面 我的英雄 按钮 是选中的 显示 我的英雄tableview
     self.myHeroButton.selected = YES;
+    
+    [self initMenu];
   
 }
 
@@ -175,8 +188,7 @@
 //    self.allHeroButton.selected = YES;
     
     
-    self.pickHeroView.center = CGPointMake(SCROLLWIDTH*2+189, 30);
-    [self.scrollView addSubview:self.pickHeroView];
+
 }
 
 //滚动视图 发生改变的时候(代理方法) 改变按钮的选中状态
@@ -436,23 +448,214 @@
 
 
 
-//所有英雄数据筛选 按钮
-- (IBAction)namePick:(id)sender {
+
+
+
+
+
+
+
+
+
+
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (tableView.tag == 2) {
+       
+         return self.menu;
+    }
+    return nil;
+   
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView.tag == 2) {
+        return 45;
+    }
+    return 0;
+}
+
+#pragma mark *********菜单*********
+
+
+
+-(void)initMenu
+{
+    self.currentData1Index = 0;
+    self.currentData1SelectedIndex = 0;
+    
+    NSArray *food = @[@"全部类型", @"战士", @"法师", @"刺客", @"辅助",@"射手",@"坦克",];
+    NSArray *travel = @[@"全部位置", @"上单", @"中单", @"打野", @"ADC",@"辅助"];
+    
+    self.data1 = [NSMutableArray arrayWithObjects:@{@"title":@"类型", @"data":food}, @{@"title":@"位置", @"data":travel}, nil];
+    self.data2 = [NSMutableArray arrayWithObjects:@"价格不限", @"450", @"1350", @"3150", @"4800", @"6300", @"7800", nil];
+    self.data3 = [NSMutableArray arrayWithObjects:@"默认排序", @"物理", @"法伤", @"防御",@"操作", nil];
+    
+    self.menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:45];
+    self.menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
+    self.menu.separatorColor = [UIColor colorWithRed:210.0f/255.0f green:210.0f/255.0f blue:210.0f/255.0f alpha:1.0];
+    self.menu.textColor = [UIColor colorWithRed:83.f/255.0f green:83.f/255.0f blue:83.f/255.0f alpha:1.0f];
+    self.menu.dataSource = self;
+    self.menu.delegate = self;
+    
+    //self.allHero.tableHeaderView= self.menu;
+    
+}
+
+
+- (NSInteger)numberOfColumnsInMenu:(JSDropDownMenu *)menu {
+    
+    return 3;//3个选项卡
+}
+
+-(BOOL)displayByCollectionViewInColumn:(NSInteger)column{
+    
+    if (column==2) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(BOOL)haveRightTableViewInColumn:(NSInteger)column{
+    
+    if (column== 0) {
+        return YES;
+    }
+    return NO;
+}
+
+-(CGFloat)widthRatioOfLeftColumn:(NSInteger)column{
+    
+    if (column==0) {
+        return 0.3;
+    }
+    
+    return 1;
+}
+
+-(NSInteger)currentLeftSelectedRow:(NSInteger)column{//当前选择行
+    //row 行             column 列
+    if (column==0) {
+        
+        return self.currentData1Index;
+        
+    }
+    if (column==1) {
+        
+        return self.currentData2Index;
+    }
+    
+    return 0;
+}
+
+- (NSInteger)menu:(JSDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column leftOrRight:(NSInteger)leftOrRight leftRow:(NSInteger)leftRow{
+    
+    if (column==0) {
+        if (leftOrRight==0) {
+            
+            return self.data1.count;
+        } else{
+            
+            NSDictionary *menuDic = [self.data1 objectAtIndex:leftRow];
+            return [[menuDic objectForKey:@"data"] count];
+        }
+    } else if (column==1){
+        
+        return self.data2.count;
+        
+    } else if (column==2){
+        
+        return self.data3.count;
+    }
+    
+    return 0;
+}
+
+- (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
+    
+    switch (column) {
+        case 0: return [[self.data1[self.currentData1Index] objectForKey:@"data"] objectAtIndex:self.currentData1SelectedIndex];
+            break;
+        case 1: return self.data2[self.currentData2Index];
+            break;
+        case 2: return self.data3[self.currentData3Index];
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
+- (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath {
+    
+    if (indexPath.column==0) {
+        if (indexPath.leftOrRight==0) {
+            NSDictionary *menuDic = [self.data1 objectAtIndex:indexPath.row];
+            return [menuDic objectForKey:@"title"];
+        } else{
+            NSInteger leftRow = indexPath.leftRow;
+            NSDictionary *menuDic = [self.data1 objectAtIndex:leftRow];
+            return [[menuDic objectForKey:@"data"] objectAtIndex:indexPath.row];
+        }
+    } else if (indexPath.column==1) {
+        
+        return self.data2[indexPath.row];
+        
+    } else {
+        
+        return self.data3[indexPath.row];
+    }
+}
+
+- (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
+    NSLog(@"左行%ld",indexPath.leftRow);
+    NSLog(@"行%ld",indexPath.row);
+    NSLog(@"列%ld",indexPath.column);
+    NSLog(@"左或者右%ld",indexPath.leftOrRight);
+    
+    NSLog(@"\n\n");
+    
+    if (indexPath.column == 0) {
+        
+        if(indexPath.leftOrRight==0){
+          
+            self.currentData1Index = indexPath.row;
+            
+            return;
+        }
+        
+    } else if(indexPath.column == 1){
+        
+        self.currentData2Index = indexPath.row;
+        
+    } else{
+        
+        self.currentData3Index = indexPath.row;
+    }
+}
+
+#pragma mark 排序等
+//所有英雄数据筛选
+- (void)nameSorted{
     
     
-          self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-              heroBasicData *hero1 = obj1;
-              heroBasicData *hero2 = obj2;
-              
-              NSComparisonResult  result = [hero1.title compare:hero2.title];
-              
-                    
-              return result;
-             }];
+    self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        heroBasicData *hero1 = obj1;
+        heroBasicData *hero2 = obj2;
+        
+        NSComparisonResult  result = [hero1.title compare:hero2.title];
+        
+        
+        return result;
+    }];
     [self.allHero reloadData];
     
 }
-- (IBAction)pricePick:(id)sender {
+- (void)priceSorted {
     
     self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         heroBasicData *hero1 = obj1;
@@ -464,10 +667,10 @@
         return result;
     }];
     [self.allHero reloadData];
-
+    
     
 }
-- (IBAction)typePick:(id)sender {
+- (void)typeSorted{
     
     self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         heroBasicData *hero1 = obj1;
@@ -479,9 +682,10 @@
         return result;
     }];
     [self.allHero reloadData];
-
+    
     
 }
+
 
 
 
