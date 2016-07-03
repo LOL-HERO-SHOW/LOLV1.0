@@ -344,13 +344,13 @@
                 //一行 2个英雄   所以  有 count/2 行
             
                 
-                heroBasicData *hero1 = self.AllHeroArr[indexPath.row*2+1];
+                heroBasicData *hero1 = self.AllHeroArr[indexPath.row*2];
             
             
             cell.LeftHeroTypeLabel.text = hero1.tags;//英雄 类型
          
               //添加点击事件
-            cell.LeftImageview.tag = indexPath.row*2+1;//左边
+            cell.LeftImageview.tag = indexPath.row*2;//左边
             cell.LeftImageview.userInteractionEnabled = YES;
             UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
             [cell.LeftImageview addGestureRecognizer:singleTap];
@@ -365,13 +365,13 @@
             //  ??***********************  ??***********************
 
             
-                heroBasicData *hero2 = self.AllHeroArr[indexPath.row*2+2];
+                heroBasicData *hero2 = self.AllHeroArr[indexPath.row*2+1];
                 
                 
                 cell.RightHeroTypeLabel.text = hero1.tags;//英雄 类型
                 
                 //添加点击事件
-                cell.RightImageview.tag = indexPath.row*2+2;//右边
+                cell.RightImageview.tag = indexPath.row*2+1;//右边
                 cell.RightImageview.userInteractionEnabled = YES;
                 UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(UesrClicked:)];
                 [cell.RightImageview addGestureRecognizer:singleTap2];
@@ -612,14 +612,72 @@
 }
 
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
-    NSLog(@"左行%ld",indexPath.leftRow);
-    NSLog(@"行%ld",indexPath.row);
-    NSLog(@"列%ld",indexPath.column);
-    NSLog(@"左或者右%ld",indexPath.leftOrRight);
-    
-    NSLog(@"\n\n");
-    
+                    NSString *str = nil;
     if (indexPath.column == 0) {
+        
+        if (indexPath.leftRow == 0) {//类型
+            
+            switch (indexPath.row) {
+                case 0://全部类型
+                    
+                    break;
+                case 1://战士
+                    str = @"fighter";
+                    break;
+                case 2://法师
+                    str = @"mage";
+                    break;
+                case 3://刺客
+                    str = @"assassin";
+                    break;
+                case 4://辅助
+                    str = @"support";
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            
+        }else
+        {
+            switch (indexPath.row) {
+                case 0://全部位置
+                    
+                    break;
+                case 1://上单
+                     str = @"上单";
+                    break;
+                case 2://中单
+                     str = @"中弹";
+                    break;
+                case 3://打野
+                     str = @"打野";
+                    break;
+                case 4://ADC
+                     str = @"ADC";
+                    break;
+                    
+                default:
+                    break;
+            }
+           
+            
+        }
+        
+      
+        
+        if (str==nil) {
+            self.AllHeroArr = self.OldAllHeroArr;
+            
+        }else
+        {
+            self.AllHeroArr = [self chooseArrayWithKeyWord:str];
+        }
+        
+        
+        [self.allHero reloadData];
+        
         
         if(indexPath.leftOrRight==0){
           
@@ -628,64 +686,145 @@
             return;
         }
         
-    } else if(indexPath.column == 1){
+    } else if(indexPath.column == 1){//价格
+        
+       
+        
+        switch (indexPath.row) {
+            case 0://价格不限
+                
+                break;
+            case 1://450
+                 str = @"450";
+                break;
+            case 2://1350
+                 str = @"1350";
+                break;
+            case 3://3150
+                 str = @"3150";
+                break;
+            case 4://6300
+                 str = @"4800";
+                break;
+                
+            default://7800
+                 str = @"7800";
+                break;
+        }
+        
+        
+     
+        if (str==nil) {
+            self.AllHeroArr = self.OldAllHeroArr;
+            
+        }else
+        {
+            self.AllHeroArr = [self chooseArrayWithKeyWord:str];
+        }
+        
+        
+        [self.allHero reloadData];
+        
         
         self.currentData2Index = indexPath.row;
         
     } else{
         
+        
+        switch (indexPath.row) {
+            case 0://默认排序
+                break;
+            case 1://物理
+                [self SortedWithType:0];
+                break;
+            case 2://法伤
+                [self SortedWithType:2];
+                break;
+            case 3://防御
+                [self SortedWithType:1];
+                break;
+            case 4://操作
+                [self SortedWithType:3];
+                break;
+                
+            default:
+                break;
+        }
+        
+
+        
         self.currentData3Index = indexPath.row;
     }
+    
+    
+    
+
+    
 }
 
 #pragma mark 排序等
 //所有英雄数据筛选
-- (void)nameSorted{
+- (void)SortedWithType:(int)type{
     
-    
+ 
     self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         heroBasicData *hero1 = obj1;
         heroBasicData *hero2 = obj2;
         
-        NSComparisonResult  result = [hero1.title compare:hero2.title];
+       NSArray *hero1arr = [hero1.rating componentsSeparatedByString:@","];
+        NSArray *hero2arr = [hero2.rating componentsSeparatedByString:@","];
         
+        NSComparisonResult  result = [hero1arr[type] compare:hero2arr[type]];
         
-        return result;
-    }];
-    [self.allHero reloadData];
-    
-}
-- (void)priceSorted {
-    
-    self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        heroBasicData *hero1 = obj1;
-        heroBasicData *hero2 = obj2;
-        
-        NSComparisonResult  result = [hero1.price compare:hero2.price];
-        
+       
         
         return result;
     }];
-    [self.allHero reloadData];
-    
-    
-}
-- (void)typeSorted{
-    
-    self.AllHeroArr =[ self.OldAllHeroArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        heroBasicData *hero1 = obj1;
-        heroBasicData *hero2 = obj2;
-        
-        NSComparisonResult  result = [hero1.tags compare:hero2.tags];
-        
-        
-        return result;
-    }];
-    [self.allHero reloadData];
-    
+
+        [self.allHero reloadData];
     
 }
 
+
+
+
+
+
+//根据关键词 来 选择数组
+-(NSArray *)chooseArrayWithKeyWord:(NSString *)keyword
+{
+    NSMutableArray *new = [NSMutableArray array];
+    for (heroBasicData *hero in self.OldAllHeroArr) {
+        if ([hero.title containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.enName containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.cnName containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.tags containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.rating containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.location containsString:keyword]) {
+            [new addObject:hero];
+        }
+        if ([hero.price containsString:keyword]) {
+            [new addObject:hero];
+        }
+       
+    }
+    
+    
+    
+    
+    return new;
+    
+}
 
 
 
