@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "NewsViewController.h"
 #import "MyCell.h"
+#import "TitleNewsTableViewController.h"
 @interface SearchViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSArray *videos;
@@ -28,6 +29,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"新闻" style:UIBarButtonItemStylePlain target:self action:@selector(gotoNews)];
      
     [self addSearch];
     [self addTableView];
@@ -38,9 +40,15 @@ static NSString * const reuseIdentifier = @"Cell";
        self.news = obj;
        [self.tableView reloadData];
    }];
+    
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
    
 
+}
+-(void)gotoNews
+{
+    [self.navigationController presentViewController:[[UINavigationController alloc]initWithRootViewController:[[TitleNewsTableViewController alloc]init]] animated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -114,6 +122,9 @@ static NSString * const reuseIdentifier = @"Cell";
     for (int i = 0; i <4; i++) {
         UIImageView *iv = [[UIImageView alloc]initWithFrame:CGRectMake(i*self.sv.frame.size.width, 0, self.sv.frame.size.width, self.sv.frame.size.height)];
         iv.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
+        [iv setContentMode:UIViewContentModeScaleAspectFill];
+        //让控件超出范围不显示
+        iv.clipsToBounds = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(new)];
         [iv  addGestureRecognizer:tap];
         

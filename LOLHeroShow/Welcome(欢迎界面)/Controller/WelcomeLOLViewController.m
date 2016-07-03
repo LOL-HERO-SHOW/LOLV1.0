@@ -61,19 +61,19 @@
     //设置LOLScrollView的代理人位当前控制器
     self.LOLScrollView.delegate = self;
     //大小4个屏幕的宽度
-    self.LOLScrollView.contentSize = CGSizeMake(self.view.frame.size.width*4, self.view.frame.size.height);
+    self.LOLScrollView.contentSize = CGSizeMake(self.view.frame.size.width*5, self.view.frame.size.height);
     //循环创建四个  imageView 并添加到LOLscrollView 中
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
         //获取当前循环次数  所需的图片名称
-        NSString *imageName = [NSString stringWithFormat:@"IMG_145%d",i+3];
+        NSString *imageName = [NSString stringWithFormat:@"IMG_145%d",i+2];
         imageView.image = [UIImage imageNamed:imageName];
         //设置imageView的frame
         imageView.frame = CGRectMake(i*self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
         //将创建号的imageView添加到LOLscrollView上
         [self.LOLScrollView addSubview:imageView];
         //在创建最后一个imageView时
-        if (i == 3) {
+        if (i == 4) {
             UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
             loginBtn.frame = CGRectMake(imageView.frame.size.width - 80, imageView.frame.size.height - 50 , 60, 30);
             [loginBtn setTitle:@"跳过" forState:UIControlStateNormal];

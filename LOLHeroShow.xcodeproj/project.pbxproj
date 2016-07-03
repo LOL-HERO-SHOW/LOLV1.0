@@ -16,6 +16,7 @@
 		8516F3FA1D275CEE00F6707F /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8516F3F81D275CEE00F6707F /* JSDropDownMenu.m */; };
 		851E80421D24A01C007E573C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E803D1D24A01C007E573C /* SearchViewController.m */; };
 		851E80441D24A01C007E573C /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 851E80411D24A01C007E573C /* UserInfoTableViewController.m */; };
+		856A23921D27C02A00DC40FD /* TitleNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 856A23911D27C02A00DC40FD /* TitleNewsTableViewController.m */; };
 		8587E7DB1D24A11800E786BF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8587E7DA1D24A11800E786BF /* User.m */; };
 		8587E7E41D24A12F00E786BF /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8587E7E01D24A12F00E786BF /* UserTableViewCell.m */; };
 		8587E7E51D24A12F00E786BF /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8587E7E11D24A12F00E786BF /* UserTableViewCell.xib */; };
@@ -74,6 +75,8 @@
 		851E803D1D24A01C007E573C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		851E80401D24A01C007E573C /* UserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewController.h; sourceTree = "<group>"; };
 		851E80411D24A01C007E573C /* UserInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewController.m; sourceTree = "<group>"; };
+		856A23901D27C02A00DC40FD /* TitleNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleNewsTableViewController.h; sourceTree = "<group>"; };
+		856A23911D27C02A00DC40FD /* TitleNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleNewsTableViewController.m; sourceTree = "<group>"; };
 		8587E7D91D24A11400E786BF /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = "../../Welcome(欢迎界面)/Model/User.h"; sourceTree = "<group>"; };
 		8587E7DA1D24A11800E786BF /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "../../Welcome(欢迎界面)/Model/User.m"; sourceTree = "<group>"; };
 		8587E7DF1D24A12F00E786BF /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
@@ -196,7 +199,6 @@
 				85DB418F1D20DCAB0045DA86 /* Hero(英雄界面) */,
 				85AFF1581D1C1A5700B0D27F /* Main */,
 				85AFF1541D1C1A0C00B0D27F /* Welcome(欢迎界面) */,
-				85AFF1501D1C1A0300B0D27F /* SearchResult(搜索结果界面) */,
 				85AFF14C1D1C19FD00B0D27F /* Search(搜索界面) */,
 				85AFF1481D1C19F500B0D27F /* Person(个人界面) */,
 				85AFF1041D1B64A900B0D27F /* Supporting Files */,
@@ -290,6 +292,8 @@
 				85F89EA31D251BC50061BAB0 /* NewsViewController.h */,
 				85F89EA41D251BC50061BAB0 /* NewsViewController.m */,
 				85F89EA51D251BC50061BAB0 /* NewsViewController.xib */,
+				856A23901D27C02A00DC40FD /* TitleNewsTableViewController.h */,
+				856A23911D27C02A00DC40FD /* TitleNewsTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,37 +318,6 @@
 				85F89EA81D253C540061BAB0 /* MyCell.h */,
 				85F89EA91D253C540061BAB0 /* MyCell.m */,
 				85F89EAA1D253C540061BAB0 /* MyCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		85AFF1501D1C1A0300B0D27F /* SearchResult(搜索结果界面) */ = {
-			isa = PBXGroup;
-			children = (
-				85AFF1511D1C1A0300B0D27F /* Controller */,
-				85AFF1521D1C1A0300B0D27F /* Model */,
-				85AFF1531D1C1A0300B0D27F /* View */,
-			);
-			path = "SearchResult(搜索结果界面)";
-			sourceTree = "<group>";
-		};
-		85AFF1511D1C1A0300B0D27F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		85AFF1521D1C1A0300B0D27F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		85AFF1531D1C1A0300B0D27F /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -719,6 +692,7 @@
 				8587E7FA1D24A2F000E786BF /* qqTableViewCell.m in Sources */,
 				8587E7E41D24A12F00E786BF /* UserTableViewCell.m in Sources */,
 				8587E7E81D24A1A800E786BF /* Utils.m in Sources */,
+				856A23921D27C02A00DC40FD /* TitleNewsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

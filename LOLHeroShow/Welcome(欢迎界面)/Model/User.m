@@ -17,7 +17,7 @@
         self.qquin = dic[@"qquin"];
         
         self.icon_id = dic[@"icon_id"];
-        self.icon_id = dic[@"icon"];
+        self.icon = dic[@"icon"];
         self.area_id = dic[@"area_id"];
         self.level = dic[@"level"];
         self.tier = dic[@"tier"];

@@ -33,7 +33,7 @@
     self.win_pointLabel.text = user.win_point.stringValue;
     [Utils requestHeadImageWithId:user.icon_id andCallback:^(id obj) {
         NSString *path = obj;
-        NSLog(@"%@", path);
+        
         [self.headIV setImageWithURL:[NSURL URLWithString:path]];
         
     }];
