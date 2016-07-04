@@ -12,7 +12,7 @@
 
 @interface RecordTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *game_type;
+@property (weak, nonatomic) IBOutlet UILabel *battle_map;
 @property (weak, nonatomic) IBOutlet UILabel *win;
 @property (weak, nonatomic) IBOutlet UIImageView *champion_id;
 

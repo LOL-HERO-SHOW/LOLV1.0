@@ -17,7 +17,7 @@
         
         self.win = dic[@"win"];
         self.battle_map = dic[@"battle_map"];
-        self.battle_time = dic[@"champion_id"];
+        self.champion_id = dic[@"champion_id"];
         self.game_type = dic[@"game_type"];
     }
     return self;

@@ -57,6 +57,44 @@ manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     }];
 }
 
++(void)getUserIconWithIconid:(NSString *)iconid andCallback:(Block)callback {
+    NSString *path = [NSString stringWithFormat:@"http://lolapi.games-cube.com/GetUserIcon?iconid=%@",iconid];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:TOKEN] forHTTPHeaderField:@"DAIWAN-API-TOKEN"];
+    
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+//        NSLog(@"%@",dic);
+        NSString *imagePath = ((NSDictionary *)(((NSArray *)dic[@"data"]).firstObject))[@"return"];
+        callback(imagePath);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
+    
+}
+
++(void)getChampionIconWithChampion_id:(NSNumber *)champion_id andCallback:(Block)callback {
+    NSString *path = [NSString stringWithFormat:@"http://lolapi.games-cube.com/GetChampionIcon?id=%@",champion_id];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:TOKEN] forHTTPHeaderField:@"DAIWAN-API-TOKEN"];
+    
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+        NSDictionary *dataDic = ((NSArray *)dic[@"data"]).firstObject;
+        NSString *heroImagePath = dataDic[@"return"];
+//        NSLog(@"%@", heroImagePath);
+        callback(heroImagePath);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
+}
+
 +(void)requestHeadImageWithId:(NSNumber *)icon_id andCallback:(Block)callback
 {
     

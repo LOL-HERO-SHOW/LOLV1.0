@@ -10,7 +10,15 @@
 #define PrefixHeader_pch
 
 
-#define TOKEN @"HJNEP-QIEJC-DTXII-ZMESJ"
+<<<<<<< Updated upstream
+
+=======
+<<<<<<< HEAD
+#define TOKEN @"KCJZH-NFJRL-FDMII-NFTEI"
+=======
+
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

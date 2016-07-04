@@ -11,8 +11,8 @@
 @interface User : NSObject
 @property(nonatomic,copy)NSString *name;
 @property(nonatomic,copy)NSString *qquin;
+@property(nonatomic,strong)NSString *icon_id;
 
-@property(nonatomic,strong)NSNumber *icon_id;
 @property(nonatomic,strong)NSNumber *area_id;
 @property(nonatomic,strong)NSNumber *icon;
 @property(nonatomic,strong)NSNumber *level;

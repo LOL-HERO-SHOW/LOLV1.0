@@ -16,6 +16,8 @@ typedef void(^Block)(id obj);
 
 +(void)getUserInfoWithCode:(NSString *)gameName andCallback:(Block)callback;
 +(void)getUserHotInfoWithQQuin:(NSString *)qquin andVaid:(NSString *)vaid andCallback:(Block)callback;
++(void)getUserIconWithIconid:(NSString *)iconid andCallback:(Block)callback;
++(void)getChampionIconWithChampion_id:(NSNumber *)champion_id andCallback:(Block)callback;
 
 +(void)requesTVsWithCallback:(Block)callback;
 

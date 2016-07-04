@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4313A08E1D2767EC0012EF96 /* PersonMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4313A08D1D2767EC0012EF96 /* PersonMessageView.m */; };
 		43173FE71D26143D0017B823 /* Combat.m in Sources */ = {isa = PBXBuildFile; fileRef = 43173FE61D26143D0017B823 /* Combat.m */; };
 		43173FEB1D265D270017B823 /* 01z58PICNdh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43173FEA1D265D270017B823 /* 01z58PICNdh.jpg */; };
 		51340CF7550A8A125BBA46D7 /* libPods-LOLHeroShow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC3BF90A7D8A616B3CDE4D3 /* libPods-LOLHeroShow.a */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		4023D80B43B49BFD660BE9AB /* Pods-LOLHeroShow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOLHeroShow.release.xcconfig"; path = "Pods/Target Support Files/Pods-LOLHeroShow/Pods-LOLHeroShow.release.xcconfig"; sourceTree = "<group>"; };
+		4313A08C1D2767EC0012EF96 /* PersonMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonMessageView.h; sourceTree = "<group>"; };
+		4313A08D1D2767EC0012EF96 /* PersonMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonMessageView.m; sourceTree = "<group>"; };
 		43173FE51D26143D0017B823 /* Combat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Combat.h; path = LOLHeroShow/Combat.h; sourceTree = SOURCE_ROOT; };
 		43173FE61D26143D0017B823 /* Combat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Combat.m; path = LOLHeroShow/Combat.m; sourceTree = SOURCE_ROOT; };
 		43173FEA1D265D270017B823 /* 01z58PICNdh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01z58PICNdh.jpg; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				8587E7E91D24A2F000E786BF /* MeViewController.h */,
 				8587E7EA1D24A2F000E786BF /* MeViewController.m */,
 				8587E7EB1D24A2F000E786BF /* MeViewController.xib */,
+				4313A08C1D2767EC0012EF96 /* PersonMessageView.h */,
+				4313A08D1D2767EC0012EF96 /* PersonMessageView.m */,
 				8587E7EE1D24A2F000E786BF /* RecordTableViewCell.h */,
 				8587E7EF1D24A2F000E786BF /* RecordTableViewCell.m */,
 				8587E7F01D24A2F000E786BF /* RecordTableViewCell.xib */,
@@ -681,6 +686,7 @@
 				8587E7FB1D24A2F000E786BF /* RecordTableViewCell.m in Sources */,
 				8516F3E51D269F4F00F6707F /* heroBasicData.m in Sources */,
 				85DB28E21D22A795001F2564 /* requestTool.m in Sources */,
+				4313A08E1D2767EC0012EF96 /* PersonMessageView.m in Sources */,
 				85AFF1061D1B64A900B0D27F /* main.m in Sources */,
 				85F89EAF1D2540FE0061BAB0 /* News.m in Sources */,
 				85DB41561D20D4F30045DA86 /* WelcomeLOLViewController.m in Sources */,
