@@ -51,6 +51,8 @@
 		85DB41BF1D20F8A00045DA86 /* MyHeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85DB41B71D20F8A00045DA86 /* MyHeroTableViewCell.xib */; };
 		85DB41C01D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DB41BA1D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.m */; };
 		85DB41C11D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85DB41BB1D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.xib */; };
+		85F1273C1D28F1E300CF5F12 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F1273A1D28F1E300CF5F12 /* MyCollectionViewCell.m */; };
+		85F1273D1D28F1E300CF5F12 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F1273B1D28F1E300CF5F12 /* MyCollectionViewCell.xib */; };
 		85F89E9C1D24CA370061BAB0 /* searchbar_textfield_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85F89E9B1D24CA370061BAB0 /* searchbar_textfield_search_icon@2x.png */; };
 		85F89E9E1D24CA9E0061BAB0 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85F89E9D1D24CA9E0061BAB0 /* user@2x.png */; };
 		85F89EA21D24CB7C0061BAB0 /* compose_trendbutton_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85F89EA11D24CB7C0061BAB0 /* compose_trendbutton_background@2x.png */; };
@@ -132,6 +134,9 @@
 		85DB41B91D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyFreeHeroTableViewCell.h; sourceTree = "<group>"; };
 		85DB41BA1D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeeklyFreeHeroTableViewCell.m; sourceTree = "<group>"; };
 		85DB41BB1D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyFreeHeroTableViewCell.xib; sourceTree = "<group>"; };
+		85F127391D28F1E300CF5F12 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		85F1273A1D28F1E300CF5F12 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		85F1273B1D28F1E300CF5F12 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		85F89E9B1D24CA370061BAB0 /* searchbar_textfield_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_search_icon@2x.png"; sourceTree = "<group>"; };
 		85F89E9D1D24CA9E0061BAB0 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		85F89EA11D24CB7C0061BAB0 /* compose_trendbutton_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose_trendbutton_background@2x.png"; sourceTree = "<group>"; };
@@ -199,6 +204,8 @@
 		85AFF1031D1B64A900B0D27F /* LOLHeroShow */ = {
 			isa = PBXGroup;
 			children = (
+				85F127351D28F1BD00CF5F12 /* 连载动漫 */,
+				85F127311D28F1AE00CF5F12 /* TV视频界面 */,
 				85DB418F1D20DCAB0045DA86 /* Hero(英雄界面) */,
 				85AFF1581D1C1A5700B0D27F /* Main */,
 				85AFF1541D1C1A0C00B0D27F /* Welcome(欢迎界面) */,
@@ -521,6 +528,71 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		85F127311D28F1AE00CF5F12 /* TV视频界面 */ = {
+			isa = PBXGroup;
+			children = (
+				85F127321D28F1AE00CF5F12 /* Controller */,
+				85F127331D28F1AE00CF5F12 /* Model */,
+				85F127341D28F1AE00CF5F12 /* View */,
+			);
+			path = "TV视频界面";
+			sourceTree = "<group>";
+		};
+		85F127321D28F1AE00CF5F12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		85F127331D28F1AE00CF5F12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85F127341D28F1AE00CF5F12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85F127391D28F1E300CF5F12 /* MyCollectionViewCell.h */,
+				85F1273A1D28F1E300CF5F12 /* MyCollectionViewCell.m */,
+				85F1273B1D28F1E300CF5F12 /* MyCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85F127351D28F1BD00CF5F12 /* 连载动漫 */ = {
+			isa = PBXGroup;
+			children = (
+				85F127361D28F1BD00CF5F12 /* Controller */,
+				85F127371D28F1BD00CF5F12 /* Model */,
+				85F127381D28F1BD00CF5F12 /* View */,
+			);
+			path = "连载动漫";
+			sourceTree = "<group>";
+		};
+		85F127361D28F1BD00CF5F12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		85F127371D28F1BD00CF5F12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85F127381D28F1BD00CF5F12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E601308169D5F513E8189041 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +682,7 @@
 				8587E7FC1D24A2F000E786BF /* RecordTableViewCell.xib in Resources */,
 				8587E7E51D24A12F00E786BF /* UserTableViewCell.xib in Resources */,
 				85B6D7151D20C14100A77158 /* u=2373384166,770149909&fm=21&gp=0.jpg in Resources */,
+				85F1273D1D28F1E300CF5F12 /* MyCollectionViewCell.xib in Resources */,
 				8587E7F91D24A2F000E786BF /* MeViewController.xib in Resources */,
 				85B6D70F1D20BCDC00A77158 /* Search (1).png in Resources */,
 				85DB41C11D20F8A00045DA86 /* WeeklyFreeHeroTableViewCell.xib in Resources */,
@@ -686,7 +759,11 @@
 				8587E7FB1D24A2F000E786BF /* RecordTableViewCell.m in Sources */,
 				8516F3E51D269F4F00F6707F /* heroBasicData.m in Sources */,
 				85DB28E21D22A795001F2564 /* requestTool.m in Sources */,
+<<<<<<< Updated upstream
 				4313A08E1D2767EC0012EF96 /* PersonMessageView.m in Sources */,
+=======
+				85F1273C1D28F1E300CF5F12 /* MyCollectionViewCell.m in Sources */,
+>>>>>>> Stashed changes
 				85AFF1061D1B64A900B0D27F /* main.m in Sources */,
 				85F89EAF1D2540FE0061BAB0 /* News.m in Sources */,
 				85DB41561D20D4F30045DA86 /* WelcomeLOLViewController.m in Sources */,
