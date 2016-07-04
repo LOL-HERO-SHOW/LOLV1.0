@@ -17,15 +17,11 @@
         self.qquin = dic[@"qquin"];
         
         self.icon_id = dic[@"icon_id"];
-<<<<<<< Updated upstream
-        self.icon = dic[@"icon"];
-=======
-<<<<<<< HEAD
 
-=======
         self.icon = dic[@"icon"];
->>>>>>> origin/master
->>>>>>> Stashed changes
+
+        self.icon = dic[@"icon"];
+
         self.area_id = dic[@"area_id"];
         self.level = dic[@"level"];
         self.tier = dic[@"tier"];
